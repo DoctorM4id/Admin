@@ -116,6 +116,9 @@ neoForge {
 
 repositories {
     mavenCentral()
+
+    maven("https://jitpack.io")
+
     strictMaven("https://api.modrinth.com/maven", "maven.modrinth") {
         name = "Modrinth"
     }
@@ -133,6 +136,11 @@ repositories {
             includeGroup("dev.ryanhcode.sable-companion")
         }
     }
+
+    maven {
+        name = "DAQEM Studios Maven"
+        url = uri("https://maven.daqem.com/releases")
+    }
 }
 
 dependencies {
@@ -140,15 +148,7 @@ dependencies {
     // jarJar(libs.moulberry.mixinconstraints)
     implementation("thedarkcolour:kotlinforforge-neoforge:${prop("deps.neoforge-language-kotlin")}")
 
-    implementation("dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:1.6.0")
-    jarJar("dev.ryanhcode.sable-companion:sable-companion-common-1.21.1:[1.6.0,)") {
-        version {
-            prefer("1.6.0")
-        }
-    }
-
-    implementation(libs.serialization.core)
-    implementation(libs.serialization.json)
+    implementation("com.daqem.uilib:uilib-neoforge:${prop("deps.ui")}")
 }
 
 tasks.named("createMinecraftArtifacts") {

@@ -109,8 +109,15 @@ fabricApi {
 repositories {
     mavenCentral()
 
+    maven("https://jitpack.io")
+
     strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
     strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+
+    maven {
+        name = "DAQEM Studios Maven"
+        url = uri("https://maven.daqem.com/releases")
+    }
 }
 
 configurations.all {
@@ -133,12 +140,5 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric-loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
 
-    implementation(libs.serialization.core)
-    include(libs.serialization.core)
-
-    implementation(libs.serialization.json)
-    include(libs.serialization.json)
-
-    implementation(kotlin("stdlib"))
-    include(kotlin("stdlib"))
+    implementation("cn.enaium:fabric-gui-imgui:${prop("deps.ui")}")
 }

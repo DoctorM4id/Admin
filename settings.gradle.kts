@@ -27,11 +27,11 @@ stonecutter {
         fun match(version: String, vararg loaders: String) =
             loaders.forEach { version("$version-$it", version).buildscript = "$it/build.$it.gradle.kts" }
 
-        match("1.21.1", "fabric", "neoforge")
+        match("26.3", "fabric")
         //match("26.1.2", "fabric", "neoforge") // Why does mojang remake the entire ass backend each update.
 
 
-        vcsVersion = "1.21.1-fabric"
+        vcsVersion = "26.3-fabric"
     }
 }
 
